@@ -71,14 +71,12 @@ public interface Score {
     }
 
     static Score scoreWhenForty(Forty forty, Player scoredPlayer) {
-        if (forty.player.equals(scoredPlayer)) {
-            return new Game(scoredPlayer);
-        }
-
-        return incrementPoint(forty.otherPlayerPoint)
-                .map(point -> new Forty(forty.player, point))
-                .map(f -> (Score) f)
-                .orElseGet(Deuce::new);
+        return forty.player.equals(scoredPlayer) ?
+                new Game(scoredPlayer) :
+                incrementPoint(forty.otherPlayerPoint)
+                        .map(point -> new Forty(forty.player, point))
+                        .map(f -> (Score) f)
+                        .orElseGet(Deuce::new);
     }
 
     static Score scoreWhenPoints(Points points, Player scoredPlayer) {
