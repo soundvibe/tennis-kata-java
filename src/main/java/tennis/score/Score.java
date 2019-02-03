@@ -7,6 +7,8 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 import static funk4j.matching.Matchers.*;
+import static io.vavr.API.*;
+import static io.vavr.Predicates.*;
 
 public interface Score {
 
@@ -24,6 +26,17 @@ public interface Score {
                 .when(classOf(Advantage.class, advantage -> scoreWhenAdvantage(advantage, winner)))
                 .when(classOf(Game.class, game -> scoreWhenGame(game.player)))
                 .match(current);
+    }
+
+    static Score scoreVavr(Score current, Player winner) {
+        return Match(current).of(
+                Case($(instanceOf(Points.class)), points -> scoreWhenPoints(points, winner)),
+                Case($(instanceOf(Forty.class)), forty -> scoreWhenForty(forty, winner)),
+                Case($(instanceOf(Deuce.class)), deuce -> scoreWhenDeuce(winner)),
+                Case($(instanceOf(Advantage.class)), advantage -> scoreWhenAdvantage(advantage, winner)),
+                Case($(instanceOf(Game.class)), game -> scoreWhenGame(game.player)),
+                Case($(instanceOf(String.class)), game -> newGame()) //should not compile!!!
+        );
     }
 
     static Score scoreSeq(Player... winners) {
