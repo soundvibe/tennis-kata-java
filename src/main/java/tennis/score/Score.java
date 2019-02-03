@@ -8,9 +8,6 @@ import java.util.stream.Stream;
 
 import static funk4j.matching.Matchers.*;
 
-/**
- * @author OZY on 2016.08.29.
- */
 public interface Score {
 
     String toString();

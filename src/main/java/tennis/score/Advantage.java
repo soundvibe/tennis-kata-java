@@ -4,9 +4,6 @@ import tennis.Player;
 
 import java.util.Objects;
 
-/**
- * @author OZY on 2016.08.29.
- */
 public final class Advantage implements Score {
 
     final Player player;

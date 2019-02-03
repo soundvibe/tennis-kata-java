@@ -4,12 +4,9 @@ import tennis.Player;
 
 import java.util.Objects;
 
-/**
- * @author OZY on 2016.08.29.
- */
 public final class Game implements Score {
 
-    final Player player;
+    public final Player player;
 
     Game(Player player) {
         this.player = player;

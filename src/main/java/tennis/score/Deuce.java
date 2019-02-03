@@ -1,13 +1,10 @@
 package tennis.score;
 
-/**
- * @author OZY on 2016.08.29.
- */
 public final class Deuce implements Score {
 
     @Override
     public boolean equals(Object o) {
-        return this == o || !(o == null || getClass() != o.getClass()) && o.getClass().equals(getClass());
+        return this == o || !(o == null || getClass() != o.getClass());
     }
 
     @Override

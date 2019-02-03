@@ -4,9 +4,6 @@ import tennis.Point;
 
 import java.util.Objects;
 
-/**
- * @author OZY on 2016.08.29.
- */
 public final class Points implements Score {
 
     final Point playerOnePoint;
